@@ -3,6 +3,7 @@ import { Card, Checkbox, Image } from "semantic-ui-react";
 import { critterpedia } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
+import styles from "./App.module.scss";
 
 function App() {
   return (
@@ -10,12 +11,12 @@ function App() {
       <h1>図鑑</h1>
       <Card.Group>
         {critterpedia.map((critter) => (
-          <Card key={critter.name}>
+          <Card key={critter.name} className={styles.card}>
             <Card.Content>
               <Image
                 floated="right"
                 size="mini"
-                src={`/critter_icon/${critter.type}_${critter.no}.jpg`}
+                src={`/critter_icon/${critter.no}-${critter.type === "bug" ? critter.no + 12 : critter.no + 92}.jpg`}
               />
               <Card.Header>{critter.name}</Card.Header>
               <Card.Meta>
