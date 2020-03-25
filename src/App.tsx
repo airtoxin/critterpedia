@@ -11,17 +11,19 @@ function App() {
       <h1>図鑑</h1>
       <Card.Group>
         {critterpedia.map((critter) => (
-          <Card key={critter.name} className={styles.card}>
+          <Card key={`${critter.no}_${critter.name}`} className={styles.card}>
             <Card.Content>
               <Image
                 floated="right"
-                size="mini"
-                src={`/critter_icon/${critter.no}-${critter.type === "bug" ? critter.no + 12 : critter.no + 92}.jpg`}
+                size="tiny"
+                src={`/critter_icon/${critter.no}-${critter.type === "bug" ? critter.no + 92 : critter.no + 12}.jpg`}
               />
               <Card.Header>{critter.name}</Card.Header>
               <Card.Meta>
-                <span>No.{critter.no}</span>&nbsp;
-                <span>{critter.price}ベル</span>
+                <p>No.{critter.no}</p>
+
+                <p>{critter.price}ベル</p>
+                <p>{critter.place} {critter.condition}</p>
               </Card.Meta>
               <Card.Description>
                 <Months
