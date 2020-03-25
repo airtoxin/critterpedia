@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Card, Checkbox, Dropdown, Form, Image } from "semantic-ui-react";
-import { critterpedia } from "./critterpedia";
+import { Critter, critterpedia, getId } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
 import styles from "./App.module.scss";
@@ -12,6 +12,42 @@ function App() {
     const currentHour = current.getHours();
     return { current, currentMonth, currentHour };
   }, []);
+  const [caughtCritters, setCaughtCrittersRaw] = useState<{ [k: string]: 1 }>(
+    {}
+  );
+  const setCaughtCritters = useCallback(
+    (critter: Critter) =>
+      setCaughtCrittersRaw({ ...caughtCritters, [getId(critter)]: 1 }),
+    [caughtCritters]
+  );
+  const unsetCaughtCritters = useCallback(
+    (critter: Critter) => {
+      const { [getId(critter)]: _, ...rest } = caughtCritters;
+      setCaughtCrittersRaw(rest);
+    },
+    [caughtCritters]
+  );
+  useEffect(() => {
+    try {
+      setCaughtCrittersRaw(
+        (
+          window.localStorage.getItem("critterpedia_caught")?.split(",") ?? []
+        ).reduce((o, k) => ({ ...o, [k]: 1 }), {})
+      );
+    } catch (e) {
+      console.warn(e);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(
+        "critterpedia_caught",
+        Object.keys(caughtCritters).join(",")
+      );
+    } catch (e) {
+      console.warn(e);
+    }
+  }, [caughtCritters]);
   const [filterNorthSouth, setFilterNorthSouth] = useState<
     null | "north" | "south"
   >(null);
@@ -39,7 +75,9 @@ function App() {
         .filter((critter) =>
           filterCatchable ? critter.hour.includes(currentHour) : true
         )
-        .filter((critter) => (filterUncaught ? true : true)),
+        .filter((critter) =>
+          filterUncaught ? caughtCritters[getId(critter)] !== 1 : true
+        ),
     [
       currentHour,
       currentMonth,
@@ -82,7 +120,7 @@ function App() {
           <Form.Field>
             <Checkbox
               toggle
-              label="今捕れる生物だけ表示"
+              label="今の時間捕れる生物だけ表示"
               onChange={(event, data) =>
                 setFilterCatchable(data.checked ?? false)
               }
@@ -137,7 +175,16 @@ function App() {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Checkbox toggle label="捕まえた！" />
+              <Checkbox
+                toggle
+                label="捕まえた！"
+                checked={caughtCritters[getId(critter)] === 1}
+                onChange={(event, data) =>
+                  data.checked
+                    ? setCaughtCritters(critter)
+                    : unsetCaughtCritters(critter)
+                }
+              />
             </Card.Content>
           </Card>
         ))}

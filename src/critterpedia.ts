@@ -10,6 +10,9 @@ export type Critter = {
   condition?: string;
 };
 
+export const getId = (critter: Critter): string =>
+  `${critter.no}_${critter.type}`;
+
 export const critterpedia: Critter[] = [
   {
     type: "bug",
