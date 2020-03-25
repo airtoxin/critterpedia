@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Checkbox, Image } from "semantic-ui-react";
-import { critterpedia } from "./data";
+import { critterpedia } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
 
