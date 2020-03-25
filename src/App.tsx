@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Card, Checkbox, Dropdown, Form, Image } from "semantic-ui-react";
+import { Card, Checkbox, Container, Dropdown, Form, Image } from "semantic-ui-react";
 import { Critter, critterpedia, getId } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
@@ -84,60 +84,59 @@ function App() {
       filterCatchable,
       filterNorthSouth,
       filterUncaught,
+      caughtCritters
     ]
   );
 
   return (
-    <div>
-      <div>
-        <Form>
-          <Form.Field>
-            <Dropdown
-              placeholder="自分の地域で捕れる生物だけ表示"
-              selection
-              clearable
-              options={[
-                {
-                  key: "北半球",
-                  text: "北半球",
-                  value: "north" as const,
-                  image: { src: "/north.png" },
-                },
-                {
-                  key: "南半球",
-                  text: "南半球",
-                  value: "south" as const,
-                  image: { src: "/south.png" },
-                },
-              ]}
-              onChange={(_event, data) =>
-                setFilterNorthSouth(
-                  data.value === "" ? null : (data.value as "north" | "south")
-                )
-              }
-            />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox
-              toggle
-              label="今の時間捕れる生物だけ表示"
-              onChange={(event, data) =>
-                setFilterCatchable(data.checked ?? false)
-              }
-            />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox
-              toggle
-              label="捕まえてない生物だけ表示"
-              onChange={(_event, data) =>
-                setFilterUncaught(data.checked ?? false)
-              }
-            />
-          </Form.Field>
-        </Form>
-      </div>
-      <h1>図鑑</h1>
+    <Container>
+      <Form>
+        <Form.Field>
+          <Dropdown
+            placeholder="自分の地域で捕れる生物だけ表示"
+            selection
+            clearable
+            options={[
+              {
+                key: "北半球",
+                text: "北半球",
+                value: "north" as const,
+                image: { src: "/north.png" },
+              },
+              {
+                key: "南半球",
+                text: "南半球",
+                value: "south" as const,
+                image: { src: "/south.png" },
+              },
+            ]}
+            onChange={(_event, data) =>
+              setFilterNorthSouth(
+                data.value === "" ? null : (data.value as "north" | "south")
+              )
+            }
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            toggle
+            label="今の時間捕れる生物だけ表示"
+            onChange={(event, data) =>
+              setFilterCatchable(data.checked ?? false)
+            }
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            toggle
+            label="捕まえてない生物だけ表示"
+            onChange={(_event, data) =>
+              setFilterUncaught(data.checked ?? false)
+            }
+          />
+        </Form.Field>
+      </Form>
+
       <Card.Group>
         {critters.map((critter) => (
           <Card key={`${critter.no}_${critter.name}`} className={styles.card}>
@@ -189,7 +188,7 @@ function App() {
           </Card>
         ))}
       </Card.Group>
-    </div>
+    </Container>
   );
 }
 
