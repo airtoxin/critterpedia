@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "./App.module.scss";
 import { Card, Checkbox, Image } from "semantic-ui-react";
 import { critterpedia } from "./data";
-import { range } from "remeda";
-import cn from "classnames";
+import { Months } from "./Months";
+import { Hours } from "./Hours";
 
 function App() {
   return (
@@ -24,41 +23,17 @@ function App() {
                 <span>{critter.price}ベル</span>
               </Card.Meta>
               <Card.Description>
-                <div className={styles.month}>
-                  <span className={cn(styles.monthCell, styles.iconNorth)}/>
-                  {range(1, 13).map((n) => (
-                    <div
-                      key={n}
-                      className={cn(
-                        styles.monthCell,
-                        critter.monthInNorth.includes(n) && styles.north
-                      )}
-                    >
-                      {n}
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.month}>
-                  <span className={cn(styles.monthCell, styles.iconSouth)}/>
-                  {range(1, 13).map((n) => (
-                    <div
-                      key={n}
-                      className={cn(
-                        styles.monthCell,
-                        critter.monthInSouth.includes(n) && styles.south
-                      )}
-                    >
-                      {n}
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.hour}>
-                  {range(0, 24).map((n) => (
-                    <div key={n} className={cn(styles.hourCell, styles[n])}>
-                      {n}
-                    </div>
-                  ))}
-                </div>
+                <Months
+                  iconUrl="/north.png"
+                  highlights={critter.monthInNorth}
+                  highlightBackgroundColor="#0e8dfe"
+                />
+                <Months
+                  iconUrl="/south.png"
+                  highlights={critter.monthInNorth}
+                  highlightBackgroundColor="#fc4c3c"
+                />
+                <Hours highlights={critter.hour} />
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
