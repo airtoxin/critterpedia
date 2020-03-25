@@ -6,6 +6,10 @@ import { Hours } from "./Hours";
 import styles from "./App.module.scss";
 
 function App() {
+  const current = new Date();
+  const month = current.getMonth() + 1;
+  const hour = current.getHours();
+
   return (
     <div>
       <h1>図鑑</h1>
@@ -16,27 +20,33 @@ function App() {
               <Image
                 floated="right"
                 size="tiny"
-                src={`/critter_icon/${critter.no}-${critter.type === "bug" ? critter.no + 92 : critter.no + 12}.jpg`}
+                src={`/critter_icon/${critter.no}-${
+                  critter.type === "bug" ? critter.no + 92 : critter.no + 12
+                }.jpg`}
               />
               <Card.Header>{critter.name}</Card.Header>
               <Card.Meta>
                 <p>No.{critter.no}</p>
 
                 <p>{critter.price}ベル</p>
-                <p>{critter.place} {critter.condition}</p>
+                <p>
+                  {critter.place} {critter.condition}
+                </p>
               </Card.Meta>
               <Card.Description>
                 <Months
+                  current={current}
                   iconUrl="/north.png"
                   highlights={critter.monthInNorth}
                   highlightBackgroundColor="#0e8dfe"
                 />
                 <Months
+                  current={current}
                   iconUrl="/south.png"
                   highlights={critter.monthInNorth}
                   highlightBackgroundColor="#fc4c3c"
                 />
-                <Hours highlights={critter.hour} />
+                <Hours current={current} highlights={critter.hour} />
               </Card.Description>
             </Card.Content>
             <Card.Content extra>

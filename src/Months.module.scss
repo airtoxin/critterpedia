@@ -7,6 +7,11 @@
     color: white;
     font-size: 0.5rem;
     background-color: #e0e0e0;
+    box-sizing: border-box;
+
+    &.current {
+      border: dashed 1px black;
+    }
 
     &.icon {
       background-color: initial;

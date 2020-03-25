@@ -5,12 +5,14 @@ import { range } from "remeda";
 import cn from "classnames";
 
 export type MonthsProps = {
+  current: Date;
   iconUrl: string;
   highlights: number[];
   highlightBackgroundColor: string;
 };
 
 export const Months: React.FunctionComponent<MonthsProps> = ({
+  current,
   iconUrl,
   highlights,
   highlightBackgroundColor,
@@ -20,7 +22,10 @@ export const Months: React.FunctionComponent<MonthsProps> = ({
     {range(1, 13).map((n) => (
       <div
         key={n}
-        className={styles.monthCell}
+        className={cn(
+          styles.monthCell,
+          current.getMonth() + 1 === n && styles.current
+        )}
         style={
           highlights.includes(n)
             ? { backgroundColor: highlightBackgroundColor }
