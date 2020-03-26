@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Card, Checkbox, Container, Dropdown, Form, Image } from "semantic-ui-react";
+import { Card, Checkbox, Dropdown, Form, Grid, Image } from "semantic-ui-react";
 import { Critter, critterpedia, getId } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
@@ -84,15 +84,16 @@ function App() {
       filterCatchable,
       filterNorthSouth,
       filterUncaught,
-      caughtCritters
+      caughtCritters,
     ]
   );
 
   return (
-    <Container>
-      <Form>
+    <div className={styles.container}>
+      <Form className={styles.form}>
         <Form.Field>
           <Dropdown
+            className={styles.dropdown}
             placeholder="自分の地域で捕れる生物だけ表示"
             selection
             clearable
@@ -137,7 +138,7 @@ function App() {
         </Form.Field>
       </Form>
 
-      <Card.Group>
+      <Card.Group stackable>
         {critters.map((critter) => (
           <Card key={`${critter.no}_${critter.name}`} className={styles.card}>
             <Card.Content>
@@ -188,7 +189,7 @@ function App() {
           </Card>
         ))}
       </Card.Group>
-    </Container>
+    </div>
   );
 }
 
