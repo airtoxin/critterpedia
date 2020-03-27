@@ -1,3 +1,9 @@
 .hour {
   display: flex;
+  // https://github.com/FormidableLabs/victory/issues/1430#issuecomment-580456258
+  :global(.VictoryContainer) {
+    user-select: auto !important;
+    pointer-events: auto !important;
+    touch-action: auto !important;
+  }
 }
