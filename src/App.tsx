@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Card, Checkbox, Dropdown, Form, Grid, Image } from "semantic-ui-react";
+import { Card, Checkbox, Dropdown, Form, Image } from "semantic-ui-react";
 import { Critter, critterpedia, getId } from "./critterpedia";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
@@ -152,11 +152,10 @@ function App() {
               <Card.Header>{critter.name}</Card.Header>
               <Card.Meta>
                 <p>No.{critter.no}</p>
-
-                <p>{critter.price}ベル</p>
                 <p>
-                  {critter.place} {critter.condition}
+                  {critter.place} {critter.memo}
                 </p>
+                <p>{critter.price}ベル</p>
               </Card.Meta>
               <Card.Description>
                 <Months

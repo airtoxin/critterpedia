@@ -7,7 +7,7 @@ export type Critter = {
   monthInSouth: number[];
   hour: number[];
   place: string;
-  condition?: string;
+  memo?: string;
 };
 
 export const getId = (critter: Critter): string =>
@@ -23,7 +23,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -34,7 +34,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 9, 10, 11, 12],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -45,7 +45,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 9, 10, 11, 12],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -56,7 +56,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [9, 10, 11, 12],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "花(青・黒・紫)",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -67,7 +67,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 10, 11, 12],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -78,7 +78,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -99,7 +99,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [3, 4, 5],
     hour: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -110,7 +110,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 6, 7, 8, 9, 12],
     hour: [0, 1, 2, 3, 4, 5, 6, 7, 8, 17, 18, 19, 20, 21, 22, 23],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -121,7 +121,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -132,7 +132,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 6, 7, 8, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -143,7 +143,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -154,7 +154,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     hour: [0, 1, 2, 3, 4, 19, 20, 21, 22, 23],
     place: "空中(街灯の近く)",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -175,7 +175,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -186,7 +186,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 5, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -197,7 +197,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [2, 3, 4, 5],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -208,7 +208,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [2, 3, 4, 5],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -219,7 +219,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -230,7 +230,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [3, 4, 5],
     hour: [0, 1, 2, 3, 4, 5, 6, 7, 8, 17, 18, 19, 20, 21, 22, 23],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -241,7 +241,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [3, 4],
     hour: [0, 1, 2, 3, 4, 5, 6, 7, 8, 17, 18, 19, 20, 21, 22, 23],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -252,7 +252,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 5, 9, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -263,7 +263,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 5, 9, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花(白い花・スズラン)",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -274,7 +274,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 9, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -405,7 +405,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [3, 4],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -416,7 +416,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -427,7 +427,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -463,7 +463,7 @@ export const critterpedia: Critter[] = [
       23,
     ],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -474,7 +474,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [12],
     hour: [0, 1, 2, 3, 4, 19, 20, 21, 22, 23],
     place: "水辺(海以外)",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -520,7 +520,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     place: "池",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -596,7 +596,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [4, 9, 10, 11, 12],
     hour: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
     place: "花",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -632,7 +632,7 @@ export const critterpedia: Critter[] = [
       23,
     ],
     place: "草地",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -703,7 +703,7 @@ export const critterpedia: Critter[] = [
       23,
     ],
     place: "木(切り株)",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -1254,7 +1254,7 @@ export const critterpedia: Critter[] = [
       23,
     ],
     place: "浜辺",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -1300,7 +1300,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [6, 7, 8, 9],
     hour: [0, 1, 2, 3, 4, 17, 18, 19, 20, 21, 22, 23],
     place: "空中",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -1371,7 +1371,7 @@ export const critterpedia: Critter[] = [
       23,
     ],
     place: "岩",
-    condition: "雨天時",
+    memo: "雨天時",
   },
   {
     type: "bug",
@@ -1412,7 +1412,7 @@ export const critterpedia: Critter[] = [
     monthInSouth: [5, 6, 7, 8, 9, 10],
     hour: [0, 1, 2, 3, 4, 19, 20, 21, 22, 23],
     place: "草地・地面",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
   {
     type: "bug",
@@ -1423,6 +1423,17 @@ export const critterpedia: Critter[] = [
     monthInSouth: [1, 2, 3, 4, 11, 12],
     hour: [0, 1, 2, 3, 4, 19, 20, 21, 22, 23],
     place: "草地・地面",
-    condition: "雨と雪の日以外",
+    memo: "雨と雪の日以外",
   },
+  {
+    type: "fish",
+    no: 1,
+    name: "",
+    price: 0,
+    monthInNorth: [1,2,3,4,5,6,7,8,9,10,11,12],
+    monthInSouth: [1,2,3,4,5,6,7,8,9,10,11,12],
+    hour: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+    place: "川",
+    memo: "小"
+  }
 ];
