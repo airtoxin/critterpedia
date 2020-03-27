@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Card, Checkbox, Dropdown, Form, Image } from "semantic-ui-react";
 import { Critter, critterpedia, getId } from "./critterpedia";
+import styles from "./App.module.scss";
 import { Months } from "./Months";
 import { Hours } from "./Hours";
-import styles from "./App.module.scss";
 
 function App() {
   const { current, currentMonth, currentHour } = useMemo(() => {
@@ -12,6 +12,7 @@ function App() {
     const currentHour = current.getHours();
     return { current, currentMonth, currentHour };
   }, []);
+  const [critterType, setCritterType] = useState<null | "bug" | "fish">(null);
   const [caughtCritters, setCaughtCrittersRaw] = useState<{ [k: string]: 1 }>(
     {}
   );
@@ -56,6 +57,9 @@ function App() {
   const critters = useMemo(
     () =>
       critterpedia
+        .filter((critters) =>
+          critterType == null ? true : critters.type === critterType
+        )
         .filter((critter) => {
           switch (filterNorthSouth) {
             case null: {
@@ -79,6 +83,7 @@ function App() {
           filterUncaught ? caughtCritters[getId(critter)] !== 1 : true
         ),
     [
+      critterType,
       currentHour,
       currentMonth,
       filterCatchable,
@@ -91,6 +96,31 @@ function App() {
   return (
     <div className={styles.container}>
       <Form className={styles.form}>
+        <Form.Field>
+          <Dropdown
+            className={styles.dropdown}
+            placeholder="生物の種類"
+            selection
+            clearable
+            options={[
+              {
+                key: "bug",
+                text: "昆虫",
+                value: "bug" as const,
+              },
+              {
+                key: "fish",
+                text: "魚",
+                value: "fish" as const,
+              },
+            ]}
+            onChange={(_event, data) =>
+              setCritterType(
+                data.value === "" ? null : (data.value as "bug" | "fish")
+              )
+            }
+          />
+        </Form.Field>
         <Form.Field>
           <Dropdown
             className={styles.dropdown}
