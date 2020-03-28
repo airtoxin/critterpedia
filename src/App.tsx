@@ -6,12 +6,21 @@ import { Months } from "./Months";
 import { Hours } from "./Hours";
 
 function App() {
+  const [time, setTime] = useState(new Date().getTime());
   const { current, currentMonth, currentHour } = useMemo(() => {
-    const current = new Date();
+    const current = new Date(time);
     const currentMonth = current.getMonth() + 1;
     const currentHour = current.getHours();
     return { current, currentMonth, currentHour };
-  }, []);
+  }, [time]);
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (new Date().getHours() !== currentHour) {
+        setTime(new Date().getTime());
+      }
+    }, 1000);
+    return () => clearInterval(id);
+  }, [currentHour]);
   const [critterType, setCritterType] = useState<null | "bug" | "fish">(null);
   const [caughtCritters, setCaughtCrittersRaw] = useState<{ [k: string]: 1 }>(
     {}
